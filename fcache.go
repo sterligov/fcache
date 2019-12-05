@@ -77,14 +77,6 @@ func Run(f *Fcache) {
 	f.run()
 }
 
-// func Stop(f *Fcache) {
-// 	f.stop()
-// }
-
-// func (f *Fcache) stop() {
-// 	f.stop <- struct{}{}
-// }
-
 func (f *Fcache) run() {
 	listener, err := net.Listen("tcp", ":"+f.Port)
 	if err != nil {
