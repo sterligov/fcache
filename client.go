@@ -12,7 +12,6 @@ type FcacheClient struct {
 	conn net.Conn
 }
 
-// Connect connect to key-value memory
 func (fc *FcacheClient) Connect(addr string, timeout time.Duration) error {
 	conn, err := net.Dial("tcp", addr)
 	if err != nil {
@@ -35,7 +34,6 @@ func (fc *FcacheClient) Close() error {
 	return fc.conn.Close()
 }
 
-// Set set value in memory
 func (fc *FcacheClient) Set(key, value string, expire int64) error {
 	e := strconv.FormatInt(expire, 10)
 	_, err := fmt.Fprintf(fc.conn, "set\n%s\n%s\n%s\n", key, value, e)
